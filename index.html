@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>::To do list::</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <style>
+        body{
+            background: #ccc;
+        }
+        ul{margin: 0px 0px 10px; padding: 0px;}
+        ul li{ list-style: none; border-bottom: 1px solid #fff; color: #fff; font-weight: 500; margin:0px; padding: 0px 0px 10px ; font-size: 16px; font-weight: bold;}
+        .done{text-decoration:line-through; color: #ccc;}
+        .dnone{ display: none}
+        .myInput{ width: 100%; margin-bottom: 10px;}
+
+        .myToodo{
+            padding: 20px;
+            background: #43A047;
+            justify-content: center;
+            width: 600px;
+            margin: 0px auto;
+        }
+    </style>
+</head>
+<body ng-app="myApp">
+    <div class="container d-flex">
+    <div ng-controller="myController" class="myToodo mt-5">
+        <ul>
+            <li ng-repeat="c in collection">
+                <input type="checkbox" ng-model="c.done">
+                <span ng-class="{'done':c.done}">{{c.tilte}}</span>
+            </li>
+        </ul>
+        <form  name="frm" ng-submit="addTodo()">
+        <input class="myInput" type="text" ng-model="newData" required>
+        <button ng-disabled="frm.$invalid" class="btn btn-warning" style="float: left; margin-right:10px;">Add</button>
+    </form>
+        <button ng-click="removeData()"  class="btn btn-danger">Remove</button>
+       
+        
+       
+    </div>
+</div>
+    <script src="app.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
